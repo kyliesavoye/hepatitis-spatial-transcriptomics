@@ -2,7 +2,7 @@
 
 ## Liver Spatial Transcriptomics Analysis Pipeline
 
-This repository contains a comprehensive Python pipeline for analyzing spatial transcriptomics data from liver samples with three different conditions: Autoimmune Hepatitis (AIH), Steatotic liver disease (D), and Steatohepatitis (SN). The pipeline performs neighborhood enrichment analysis and Ripley's spatial statistics to understand cellular spatial organization patterns.
+This repository contains a comprehensive Python pipeline for analyzing spatial transcriptomics data from liver samples with three different conditions: Autoimmune Hepatitis (AIH), Donor (D), and Seronegative hepatitis (SN). The pipeline performs neighborhood enrichment analysis and Ripley's spatial statistics to understand cellular spatial organization patterns.
 
 ## Table of Contents
 
@@ -47,7 +47,7 @@ The analysis focuses on 12 distinct cell types:
 - **Cross-condition Comparison**: Statistical comparison of spatial patterns between disease conditions
 - **Field-of-view (FOV) Analysis**: Per-FOV analysis for robust statistical testing
 - **Comprehensive Visualization**: Heatmaps, boxplots, and Ripley function plots
-- **Portal vs Non-portal Analysis**: Specialized analysis for portal tract regions
+- **Parenchyma vs Non-Parenchyma Analysis**: Specialized analysis for parenchyma/non-parenchyma cells
 
 ## Requirements
 
@@ -95,7 +95,7 @@ The analysis focuses on 12 distinct cell types:
 The pipeline expects the following directory structure:
 
 ```
-/rds/projects/s/spillf-spatialomics/AmberData/
+"/path/to/your/data/"
 ├── counts/
 │   ├── AIH_1607_expression_mat_fixed.csv
 │   ├── AIH_6079_expression_mat_fixed.csv
@@ -130,13 +130,13 @@ Run analysis for each condition separately:
 
 ```bash
 # Analyze AIH samples
-python amberLiverDA_AIH.py
+python Liver_analysis_AIH.py
 
 # Analyze D samples  
-python amberLiverDA_D.py
+python Liver_analysis_D.py
 
 # Analyze SN samples
-python amberLiverDA_SN.py
+python Liver_analysis_SN.py
 ```
 
 ### Cross-condition Comparison
@@ -145,7 +145,7 @@ After running individual analyses, perform comparative analysis:
 
 ```bash
 # Compare all conditions
-python amberLiverDA_comparison.py
+python Liver_analysis_comparison.py
 ```
 
 ### Customizing Analysis Parameters
@@ -174,7 +174,7 @@ To modify analysis parameters, edit the relevant functions in `funcs.py`:
   - Analyzes 2 AIH samples (1607, 6079)
   - Generates neighborhood enrichment heatmaps at multiple radii
   - Computes Ripley's G statistics with random simulations
-  - Performs portal vs non-portal region analysis
+  - Performs parenchyma vs non-parenchyma cells analysis
 
 - **`amberLiverDA_D.py`**: Steatotic liver disease sample analysis  
   - Analyzes 3 D samples (6414, 6446, 7678)
@@ -184,7 +184,7 @@ To modify analysis parameters, edit the relevant functions in `funcs.py`:
 - **`amberLiverDA_SN.py`**: Steatohepatitis sample analysis
   - Analyzes 3 SN samples (606, 1042, 2739)
   - Comprehensive spatial analysis pipeline
-  - Portal tract specific analysis
+  - Parenchyma/non-parenchyma cells specific analysis
 
 ### Comparison Analysis
 
@@ -246,8 +246,8 @@ The pipeline generates several types of output files:
 - `macrophage_cell_pairs_boxplots_with_stats.png`: Statistical comparison boxplots
 - Per-FOV Z-score data: `{condition}_combined_zscore_per_fov.csv`
 
-### Portal vs Non-portal Analysis
-- `{sample}_ripley_G_sq_PvsNP.png`: Portal tract specific spatial analysis
+### Parenchyma vs Non-parenchyma Analysis
+- `{sample}_ripley_G_sq_PvsNP.png`: parenchyma/non-parenchyma cell specific spatial analysis
 
 ## Data Format Requirements
 
@@ -260,7 +260,7 @@ The pipeline generates several types of output files:
 Required columns:
 - `final_cell_types`: Cell type annotations
 - `fov`: Field of view identifier  
-- `P_VS_NP`: Portal vs non-portal classification
+- `P_VS_NP`: parenchyma vs non-parenchyma classification
 - Spatial coordinates (x, y coordinates)
 
 ## Troubleshooting
@@ -277,7 +277,6 @@ Required columns:
 - Use SSD storage for faster I/O operations
 - Consider increasing available RAM for large datasets
 - Parallelize FOV processing if needed
-
 
 ---
 
