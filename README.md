@@ -1,5 +1,6 @@
-# hepatitis-spatial-transcriptomics
-# Liver Spatial Transcriptomics Analysis Pipeline
+# Hepatitis-spatial-transcriptomics
+
+## Liver Spatial Transcriptomics Analysis Pipeline
 
 This repository contains a comprehensive Python pipeline for analyzing spatial transcriptomics data from liver samples with three different conditions: Autoimmune Hepatitis (AIH), Steatotic liver disease (D), and Steatohepatitis (SN). The pipeline performs neighborhood enrichment analysis and Ripley's spatial statistics to understand cellular spatial organization patterns.
 
