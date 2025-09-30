@@ -15,7 +15,6 @@ This repository contains a comprehensive Python pipeline for analyzing spatial t
 - [File Descriptions](#file-descriptions)
 - [Analysis Pipeline](#analysis-pipeline)
 - [Output](#output)
-- [Citation](#citation)
 
 ## Overview
 
