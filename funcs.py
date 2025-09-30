@@ -22,7 +22,7 @@ def get_paths(dataset: str):
     Args:
         dataset (str): One of ["SN", "D", "AIH", "comparison"]
     """
-    root = "/rds/projects/s/spillf-spatialomics/AmberData/"
+    root = "/path/to/your/data/"
     return {
         "counts": root + "counts/",
         "meta": root + "meta/",
@@ -254,3 +254,4 @@ def process_sims_stat(ripley_dict, source_label):
     df = ripley_dict['sims_stat'].copy()
     df['source'] = source_label
     return df
+
